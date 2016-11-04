@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #user{
+            height:133px ;
+        }
+        #name{
+            margin-left: 50px;
+            float: left;
+        }
+        #name1 {
+            margin-left: 270px;
+        }
+        
+    </style>
+</head>
+<body>
+<div id="choice">
+    <img src="./images/rock.jpg" id="rock">
+    <img src="./images/scissor.jpg" id="scissor">
+    <img src="./images/paper.jpg" id="paper">
+</div>
+<div id="show">
+    <img src="images/question.jpg" id="user">
+    <span id="count">hello</span>
+    <img id="computer">
+</div>
+<div id="name">
+    <span>user</span>
+</div>
+<div id="name1">
+    <span>computer</span>
+</div>
+
+
+
+<script src="jquery.js"></script>
+<script>
+
+    var user = $('#user');
+    var computer = $('#computer');
+    var count = $('#count')
+    var paper = $('#paper');
+    var rock = $('#rock');
+    var scissor = $('#scissor');
+    var arr = [paper,rock,scissor]
+
+    var randomArr = function () {
+        var num = Math.floor(Math.random()*2.999);
+        return arr[num];
+    }
+
+    var change = function (temp) {
+        temp.bind("click",function () {
+            user.attr("src",temp.attr("src"));
+            var ran = randomArr();
+            computer.attr("src",ran.attr("src"));
+
+            if(temp == rock){
+                count.html(ran === rock ? "even" : (ran === paper ? 'lose' : 'win'))
+
+            }else if(temp == paper){
+                count.html(ran === paper ? "even" : (ran === scissor ? 'lose' : 'win'))
+            }else {
+                count.html(ran === scissor? "even" : (ran ===rock ? 'lose' : 'win'))
+
+            }
+        });
+    };
+
+    change(rock);
+    change(paper);
+    change(scissor);
+
+
+
+
+</script>
+
+
+</body>
+</html>
